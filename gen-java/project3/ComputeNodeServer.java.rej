@@ -1,0 +1,11 @@
+--- gen-java/project3/ComputeNodeServer.java
++++ gen-java/project3/ComputeNodeServer.java
+@@ -65,7 +65,7 @@
+    System.out.println("Establishing connection with the CentralNode...");
+ 
+    TTransport CentralNodeTransport;
+-   String CentralNodeAddr = "csel-x32-10";
++   String CentralNodeAddr = "csel-x30-10";
+    if(USE_LOCAL) CentralNodeAddr = "localhost";
+    CentralNodeTransport = new TSocket(CentralNodeAddr, 9090); // csel-x29-10
+    CentralNodeTransport.open();

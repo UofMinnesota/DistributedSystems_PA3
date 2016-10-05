@@ -1,0 +1,1 @@
+java -cp .:./jars/libthrift-0.9.1.jar:./jars/slf4j-api-1.7.14.jar project1.FilesClient

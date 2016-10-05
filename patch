@@ -1,0 +1,114 @@
+diff --cc gen-java/project1/NodeServiceHandler.java
+index 3e61caa,ad6fbcb..0000000
+--- a/gen-java/project1/NodeServiceHandler.java
++++ b/gen-java/project1/NodeServiceHandler.java
+@@@ -235,21 -215,28 +235,36 @@@ public class NodeServiceHandler impleme
+                fingerTable[i].findSuccessor(myName, ListOfNodes, numDHT);
+            }
+        }
+ -      
+ +
+        System.out.println("My ID is.."+myName.getID());
+    }
+ -  
+ +
+    public static void printFingerTable(){
+++<<<<<<< HEAD
+ +
+ +	  System.out.println("  |  "+"Start"+"  |  "+"Interval Begin"+"  |  "+"Interval End"+"  |  "+"Successor"+"  |  ");
+ +	  for(int i = 1; i <= m ; i++){
+ +
+ +		System.out.println("  |  "+fingerTable[i].getStart()+"  |  "+fingerTable[i].getIntervalBegin()+"  |  "+fingerTable[i].getIntervalEnd()+"  |  "+fingerTable[i].getSuccessor().getID()+"  |  ");
+++=======
++ 	  
++ 	  System.out.println("Node ID is "+myName.getID());
++ 	  System.out.println("Range of Keys: " + (predecessor.getID()+1)%numDHT + " - " + myName.getID());
++ 	  System.out.println("Predecessor Node: "+predecessor.getIP()+":"+predecessor.getPort()+":"+predecessor.getID());
++ 	  System.out.println("Successor Node: "+fingerTable[1].getSuccessor().getIP()+":"+fingerTable[1].getSuccessor().getPort()+":"+fingerTable[1].getSuccessor().getID());
++ 	  System.out.println("Number of Files Stored:");
++ 	  System.out.println("List of Files Stored:");
++ 	  System.out.println("Finger Table after the update:");
++ 	  System.out.println("  |  "+"Start"+"  |  "+"Interval Begin"+"  |  "+"Interval End"+"  |  "+"Successor"+"  |  ");
++ 	  for(int i = 1; i <= m ; i++){
++ 		  
++ 		System.out.println("      |      "+fingerTable[i].getStart()+"      |      "+fingerTable[i].getIntervalBegin()+"      |      "+fingerTable[i].getIntervalEnd()+"      |      "+fingerTable[i].getSuccessor().getID()+"      |      ");
+++>>>>>>> 60fe05b18c341d145816e8473d7fe184deef60aa
+  	  }
+ -	  
+ +
+    }
+ -  
+ -  
+ +
+ +
+    public static NodeName strToNodeName(String input)
+    {
+      String data[] = input.split(":");
+@@@ -458,59 -447,14 +477,64 @@@ public int isSuccessor(int hash
+  
+  	 		    NodeService.Client nodeclient = new NodeService.Client(NodeProtocol);
+  
+ -	 		     
+ +
+  	 		   String readVal = nodeclient.Read(Filename);
+ -	 		   
+ +
+  	 		    NodeTransport.close();
+ -	 		    
+ +
+  	 		    return readVal;
+++<<<<<<< HEAD
+ +		  }
+ +
+ +	/*
+ + 	for(int i=1;i<=m;i++){
+ +
+ + 		System.out.println("Iterating to ID "+fingerTable[i].getSuccessor().getID());
+ + 	if(myName.getID() < predecessor.getID()){
+ + 		if(hash>=fingerTable[i].getStart() || hash<=fingerTable[i].getSuccessor().getID()){
+ + 			TTransport NodeTransport;
+ + 			System.out.println("Request forwarded to.." +fingerTable[i].getSuccessor().getIP()+" "+fingerTable[i].getSuccessor().getPort()+ " "+fingerTable[i].getSuccessor().getID() );
+ + 		    NodeTransport = new TSocket(fingerTable[i].getSuccessor().getIP(), fingerTable[i].getSuccessor().getPort()); //map nodes in the ports
+ + 		    NodeTransport.open();
+ +
+ + 		    TProtocol NodeProtocol = new TBinaryProtocol(NodeTransport);
+ +
+ + 		    NodeService.Client nodeclient = new NodeService.Client(NodeProtocol);
+ +
+ +
+ + 		   String readVal = nodeclient.Read(Filename);
+ +
+ + 		    NodeTransport.close();
+ +
+ + 		    return readVal;
+ + 		}
+ + 	}
+ +
+ +	if(myName.getID() >= predecessor.getID()){
+ + 		if(hash>=fingerTable[i].getStart() && hash<=fingerTable[i].getSuccessor().getID()){
+ + 			TTransport NodeTransport;
+ + 			System.out.println("Request forwarded to.." +fingerTable[i].getSuccessor().getIP()+" "+fingerTable[i].getSuccessor().getPort()+ " "+fingerTable[i].getSuccessor().getID() );
+ + 		    NodeTransport = new TSocket(fingerTable[i].getSuccessor().getIP(), fingerTable[i].getSuccessor().getPort()); //map nodes in the ports
+ + 		    NodeTransport.open();
+ +
+ + 		    TProtocol NodeProtocol = new TBinaryProtocol(NodeTransport);
+ +
+ + 		    NodeService.Client nodeclient = new NodeService.Client(NodeProtocol);
+ +
+ +
+ + 		   String readVal = nodeclient.Read(Filename);
+ +
+ + 		    NodeTransport.close();
+ +
+ + 		    return readVal;
+ + 		}
+ + 	}
+ +   }
+ + 	  */
+++=======
++ 		  } 
++ 	   
+++>>>>>>> 60fe05b18c341d145816e8473d7fe184deef60aa
+     }
+     return "File not Found..";
+   }

@@ -1,0 +1,11 @@
+--- gen-java/project3/FilesClient.java
++++ gen-java/project3/FilesClient.java
+@@ -91,7 +91,7 @@
+ 		   TTransport CentralNodeTransport;
+ 
+ 
+-		   String CentralNodeAddr = "csel-x32-10";
++		   String CentralNodeAddr = "csel-x30-10";
+ 		   if(USE_LOCAL) CentralNodeAddr = "localhost";
+ 		   CentralNodeTransport = new TSocket(CentralNodeAddr, 9090); // csel-x29-10
+ 		   CentralNodeTransport.open();

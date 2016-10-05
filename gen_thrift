@@ -1,0 +1,2 @@
+thrift --gen java centralnode.thrift
+thrift --gen java computenode.thrift
